@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductType {
+  JAGUNG
+  BERAS
+  BENIH
+  PUPUK
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+}
+
+enum SelingStatus {
+  PENDING
+  COMPLETED
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  kindeId      String        @unique
+  firstName    String
+  lastName     String
+  address      String?
+  phone        String?
+  orders       Order[]
+  productSales ProductSale[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("users")
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  price       Int
+  stock       Int
+  description String?
+  image       String?
+  productType ProductType @default(PUPUK)
+  order       Order?      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("products")
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  userId     String
+  products   Product[]
+  totalPrice Int
+  status     OrderStatus @default(PENDING)
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@map("orders")
+}
+
+model ProductSale {
+  id          String       @id @default(cuid())
+  pricePerKg  Int
+  totalKg     Int
+  totalPrice  Int
+  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productType ProductType  @default(JAGUNG)
+  status      SelingStatus @default(PENDING)
+  userId      String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("product_sales")
+}
