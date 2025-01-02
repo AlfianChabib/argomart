@@ -20,7 +20,7 @@ export default async function Header() {
       <Link href={"/"} className="flex items-center gap-2">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
         <div className="flex flex-col">
-          <h1 className="text-2xl leading-6 font-bold text-green-800">Argomart</h1>
+          <h1 className="text-2xl leading-6 font-bold text-green-800">Agromart</h1>
           <p className="text-sm text-green-800/70 font-medium">A farmer solution</p>
         </div>
       </Link>
@@ -35,7 +35,7 @@ export default async function Header() {
             </SheetTrigger>
             <SheetContent className="flex flex-col text-green-900 p-4">
               <SheetHeader>
-                <SheetTitle className="text-green-900 text-2xl text-center">Argomart</SheetTitle>
+                <SheetTitle className="text-green-900 text-2xl text-center">Agromart</SheetTitle>
                 <SheetDescription className="sr-only"></SheetDescription>
               </SheetHeader>
               <div className="bg-green-600/20 rounded-md w-full p-2 flex items-center gap-2">

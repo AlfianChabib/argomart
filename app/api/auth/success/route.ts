@@ -12,8 +12,6 @@ export async function GET() {
     where: { kindeId: user.id },
   });
 
-  console.log(user.picture?.toString());
-
   if (!dbUser) {
     await prisma.user.create({
       data: {

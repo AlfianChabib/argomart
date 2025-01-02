@@ -14,7 +14,6 @@ CREATE TABLE "users" (
     "kindeId" TEXT NOT NULL,
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
-    "picture" TEXT NOT NULL,
     "address" TEXT,
     "phone" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -28,11 +27,12 @@ CREATE TABLE "products" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
-    "stock" INTEGER NOT NULL,
     "description" TEXT,
     "image" TEXT,
     "productType" "ProductType" NOT NULL DEFAULT 'PUPUK',
     "orderId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
@@ -43,6 +43,8 @@ CREATE TABLE "orders" (
     "userId" TEXT NOT NULL,
     "totalPrice" INTEGER NOT NULL,
     "status" "OrderStatus" NOT NULL DEFAULT 'PENDING',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
 );
@@ -56,6 +58,8 @@ CREATE TABLE "product_sales" (
     "productType" "ProductType" NOT NULL DEFAULT 'JAGUNG',
     "status" "SelingStatus" NOT NULL DEFAULT 'PENDING',
     "userId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "product_sales_pkey" PRIMARY KEY ("id")
 );

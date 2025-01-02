@@ -26,7 +26,7 @@ export const columns: ColumnDef<ProductSale>[] = [
     accessorKey: "totalKg",
     header: "Total Kg",
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("totalPrice"));
+      const amount = parseFloat(row.getValue("totalKg"));
       const formatted = new Intl.NumberFormat("id-ID", {
         style: "unit",
         unit: "kilogram",

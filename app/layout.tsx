@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/providers/AuthProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Argomart",
+  title: "Agromart",
   description: "Argomart is a farmer helper app",
 };
 
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={`${inter.variable} antialiased`}>{children}</body>
+        <body className={`${inter.variable} antialiased`}>
+          {children}
+          <Toaster position="top-center" richColors />
+        </body>
       </html>
     </AuthProvider>
   );
