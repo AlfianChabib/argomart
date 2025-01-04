@@ -5,8 +5,6 @@ import { MapPinHouse, Phone } from "lucide-react";
 import Image from "next/image";
 import SaleHistory from "./_components/SaleHistory";
 
-export const dynamic = "force-dynamic";
-
 const getTotalSale = (itemsSale: ProductSale[]) => {
   const totalKg = itemsSale.reduce((acc, item) => acc + item.totalKg, 0);
   const totalPrice = itemsSale.reduce((acc, item) => acc + item.totalPrice, 0);
